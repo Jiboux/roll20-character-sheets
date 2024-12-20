@@ -1,5 +1,5 @@
 /* ###############################################  Earthdawn.css  ###################################################################*/
-/*v3.33   2024 10 14*/
+/*v3.35   2024 12 20*/
 
 /* ############################################ CSS Instruction ######################################################################### */
 
@@ -519,7 +519,47 @@ xxxxx {
 
 /* ############################################ Hide/Show/Lock/Tabs Management ######################################################################### */
 
+.sheet-testTarget[value^="0"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="1"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="2"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="3"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="4"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="5"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="6"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="7"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="8"]~.sheet-HideIfNotNum,
+.sheet-testTarget[value^="9"]~.sheet-HideIfNotNum
+{
+display:inline-block;
+}
 
+
+
+.sheet-testTarget:not([value="None"])~.sheet-HideIfNotNone,
+.sheet-testTarget:not([value="PD1: @{target|Target|token_id}"])~.sheet-HideIfNotPD1,
+.sheet-testTarget:not([value="MD1: @{target|Target|token_id}"])~.sheet-HideIfNotMD1,
+.sheet-testTarget:not([value="PD1: @{target|Target|token_id}"])~.sheet-HideIfNotSD1,
+.sheet-testTarget:not([value="Ask: ?{Target Number|0}"])~.sheet-HideIfNotAsk,
+.sheet-testTarget:not([value="Ask: PD: ?{Target Number, maybe relative to PD|0}"])~.sheet-HideIfNotAskPD,
+.sheet-testTarget:not([value="Ask: MD: ?{Target Number, maybe relative to MD|0}"])~.sheet-HideIfNotAskMD,
+.sheet-testTarget:not([value="Ask: SD: ?{Target Number, maybe relative to SD|0}"])~.sheet-HideIfNotAskSD,
+.sheet-testTarget:not([value="PD"])~.sheet-HideIfNotPDv,
+.sheet-testTarget:not([value="MD"])~.sheet-HideIfNotMDv,
+.sheet-testTarget:not([value="SD"])~.sheet-HideIfNotSDv,
+.sheet-testTarget:not([value="PDh"])~.sheet-HideIfNotPDh,
+.sheet-testTarget:not([value="MDh"])~.sheet-HideIfNotMDh,
+.sheet-testTarget:not([value="SDh"])~.sheet-HideIfNotSDh,
+.sheet-testTarget:not([value="PD-each"])~.sheet-HideIfNotPD-each,
+.sheet-testTarget:not([value="MD-each"])~.sheet-HideIfNotMD-each,
+.sheet-testTarget:not([value="SD-each"])~.sheet-HideIfNotSD-each,
+.sheet-testTarget:not([value="PDhp1p"])~.sheet-HideIfNotPDhp1p,
+.sheet-testTarget:not([value="MDhp1p"])~.sheet-HideIfNotMDhp1p,
+.sheet-testTarget:not([value="SDhp1p"])~.sheet-HideIfNotSDhp1p,
+.sheet-testTarget:not([value="PD-Nat"])~.sheet-HideIfNotPD-Nat,
+.sheet-testTarget:not([value="MD-Nat"])~.sheet-HideIfNotMD-Nat,
+.sheet-testTarget:not([value="SD-Nat"])~.sheet-HideIfNotSD-Nat,
+.sheet-testTarget:not([value="Riposte"])~.sheet-HideIfNotRiposte,
+.sheet-testTarget~.sheet-HideIfNotNum,
 .sheet-testTOSelector[value="TO-Selector"]~.sheet-HideIfTOSelector,
 .sheet-testTOSelector:not([value="TO-Selector"])+.sheet-HideIfNotTOSelector,
 .sheet-testStrainAdvanced[value=""]+.sheet-HideIfNotStrainAdvanced,
@@ -622,6 +662,15 @@ xxxxx {
 .sheet-testModType:not([value="NoRoll"])~span>.sheet-HideIfRoll,
 .sheet-testModType:not([value="NoRoll"])~.sheet-HideIfRoll,
 .sheet-testModType:not([value="Damage Poison"])~.sheet-HideIfNotPoison,
+.sheet-testModType:not([value="0"])~.sheet-HideIfNotNA,
+.sheet-testModType:not([value="Action"])~.sheet-HideIfNotAction,
+.sheet-testModType:not([value="Effect"])~.sheet-HideIfNotEffect,
+.sheet-testModType:not([value="Attack"])~.sheet-HideIfNotAttack,
+.sheet-testModType:not([value="Attack CC"])~.sheet-HideIfNotAttackCC,
+.sheet-testModType:not([value="Damage"])~.sheet-HideIfNotDamage,
+.sheet-testModType:not([value="Damage CC"])~.sheet-HideIfNotDamageCC,
+.sheet-testModType:not([value="Init"])~.sheet-HideIfNotInit,
+.sheet-testModType:not([value="JumpUp"])~.sheet-HideIfNotJumpUp,
 .sheet-testRecord[value="LP"]~.sheet-HideIfLP,
 .sheet-testRecord[value="SP"]~.sheet-HideIfSP,
 .sheet-testRecord[value="Other"]~.sheet-HideIfOther,
@@ -798,24 +847,23 @@ button:hover input.sheet-buttonlabel {
   cursor:       pointer;
 }
 
-.sheet-text-button {
+.ui-dialog .charsheet button[type="action"].sheet-text-button,
+.ui-dialog .charsheet button[type="roll"].sheet-text-button {
   border-bottom:  1px solid black;
   border-right:   1px solid transparent;
   border-left:    1px solid transparent;
   border-top:     1px solid transparent;
-}
-
-.sheet-text-button {
   color:        var( --font-color );
   background-color: var( --button-color );
+
 }
 
-.charsheet button[type="roll"].sheet-text-button-header {
+.ui-dialog .charsheet button[type="roll"].sheet-text-button-header {
   color:            var( --header-font-color );
   background-color: var( --outline-color );
 }
 
-.charsheet button[type="roll"].sheet-helpbutton {
+.ui-dialog .charsheet button[type="roll"].sheet-helpbutton {
   color:black;
   background-color: maroon ;
   background-image: -moz-linear-gradient(to top,#fff,maroon);
@@ -825,20 +873,21 @@ button:hover input.sheet-buttonlabel {
   background-image: -o-linear-gradient(to top,maroon,#fff);
   background-image: linear-gradient(to top,maroon,#fff);
   background-repeat: repeat-x;
-  width: 20px;
 /*  size:130%; */
 }
 
-.charsheet button[type="compendium"],
-.charsheet button[type="roll"],
-.charsheet button[type="action"] {
+.ui-dialog .charsheet button[type="compendium"],
+.ui-dialog .charsheet button[type="roll"],
+.ui-dialog .charsheet button[type="action"],
+.charsheet button[type="compendium"] {
   border-bottom:    1px solid var( --outline-color);
   border-right:     1px solid transparent;
   border-left:      1px solid transparent;
   border-top:       1px solid transparent;
   border-radius:    5px;
-  margin-left:      1px;
-  margin-right:     1px;
+  margin: 0px 1px 0px 1px;
+  min-width:20px;
+  min-height:20px;
   color: var(--font-color);
   background-color: var( --button-color );
   background-image: -moz-linear-gradient(to top,var( --button-color ),#fff);    /* white to light grey */
@@ -849,9 +898,10 @@ button:hover input.sheet-buttonlabel {
   background-image: linear-gradient(to top,var( --button-color ),#fff);
   background-repeat: repeat-x;
   padding :         2px;
+  vertical-align: middle;
 }
 
-button[type="roll"].sheet-text-button-header {
+.ui-dialog .charsheet button[type="roll"].sheet-text-button-header {
   background-image: none;
   background-color: var( --outline-color);
   border-bottom:    1px solid white;
@@ -860,12 +910,12 @@ button[type="roll"].sheet-text-button-header {
   border-top:       1px solid white;
 }
 
-.charsheet button[type="compendium"]:hover,
-.charsheet button[type="compendium"]:active,
-.charsheet button[type="roll"]:hover,
-.charsheet button[type="roll"]:active,
-.charsheet button[type="action"]:hover,
-.charsheet button[type="action"]:active {
+.ui-dialog .charsheet  button[type="compendium"]:hover,
+.ui-dialog .charsheet  button[type="compendium"]:active,
+.ui-dialog .charsheet  button[type="roll"]:hover,
+.ui-dialog .charsheet  button[type="roll"]:active,
+.ui-dialog .charsheet  button[type="action"]:hover,
+.ui-dialog .charsheet  button[type="action"]:active {
   color:                      var( --hover-color );
   /*background-color:           var(--inactive-color);  */  /* Light Grey */
   /* background-position:        0 -15px;
@@ -1039,11 +1089,18 @@ flex-direction: column;
 .sheet-txtMed        {  width:   9em   !important  }
 .sheet-txtMedplus    {  width:  11.5em !important  }
 .sheet-txtMedLong    {  width:  14.5em   !important  }
-
 .sheet-txtLong       {  width:  16em   !important  }
 .sheet-txtLonger     {  width:  20em   !important  }
 .sheet-txtEvenLonger {  width:  27em   !important  }
 
+.sheet-testPlaceholder:not(:placeholder-shown)~span .sheet-MedLongPlaceholder,
+.sheet-testPlaceholder:not(:placeholder-shown)~div .sheet-MedLongPlaceholder{
+width:   9em   !important
+}
+.sheet-testPlaceholder:placeholder-shown~span .sheet-MedLongPlaceholder,
+.sheet-testPlaceholder:placeholder-shown~div .sheet-MedLongPlaceholder{
+width:   16em   !important
+}
 
 .sheet-vaBottom {
   vertical-align: bottom;
@@ -2907,10 +2964,9 @@ input.sheet-tabMain[value="2"]~div .sheet-section-combat fieldset+.repcontainer>
 input.sheet-tabMain[value="3"]~div fieldset+.repcontainer>.repitem input.sheet-combattab~.sheet-filter-box,
 input.sheet-tabMain[value="4"]~div fieldset+.repcontainer>.repitem input.sheet-combattab~.sheet-filter-box,
 input.sheet-tabMain[value="5"]~div fieldset+.repcontainer>.repitem input.sheet-combattab~.sheet-filter-box,
-input.sheet-tabMain[value="6"]~div fieldset+.repcontainer>.repitem input.sheet-combattab~.sheet-filter-box,
-.sheet-section-spells fieldset:not(.sheet-filterSpellEffect)+.repcontainer>.repitem input.sheet-spelltab[value^="SPL-"]~.sheet-filter-box,
-input.sheet-testSpellEffect[value="Wil"]~fieldset.sheet-filterSpellEffect+.repcontainer>.repitem input.sheet-spelltab[value="SPL-Willforce"]~.sheet-filter-box,
- .sheet-tabKnackSummary[value="0"]~fieldset.repeating_knacksummary+.repcontainer>.repitem .sheet-filter-box,
+input.sheet-tabMain[value="6"]~div fieldset.repeating_matrix+.repcontainer>.repitem input.sheet-combattab~.sheet-filter-box,
+input.sheet-tabMain[value="6"]~div fieldset.repeating_talents+.repcontainer>.repitem input.sheet-spelltab[value^="SPL-"]~.sheet-filter-box,
+.sheet-tabKnackSummary[value="0"]~fieldset.repeating_knacksummary+.repcontainer>.repitem .sheet-filter-box,
 .sheet-tabKnackSummary[value="Companion"]~fieldset.repeating_knacksummary+.repcontainer>.repitem input.sheet-knacksummarytab[value="Companion"]~.sheet-filter-box,
 .sheet-tabKnackSummary[value="AJMP"]~fieldset.repeating_knacksummary+.repcontainer>.repitem input.sheet-knacksummarytab[value="AJMP"]~.sheet-filter-box,
 .sheet-tabKnackSummary[value="M-DS"]~fieldset.repeating_knacksummary+.repcontainer>.repitem input.sheet-knacksummarytab[value="M-DS"]~.sheet-filter-box,
@@ -2921,11 +2977,8 @@ input.sheet-testSpellEffect[value="Wil"]~fieldset.sheet-filterSpellEffect+.repco
 }
 /*JBF@JBF@CD : For Skills, Knacks and Talents, in overview, everything is displayed, and in Combat, only the checked ones)*/
 
-/*JBF@JBF@CD : Do not display the spellcasting Talent twice, i.e. shown only in spell section... except in creation mode*/
-.sheet-testCreation:not([value="1"])~.sheet-testNPC:not([value="-1"])~input.sheet-tabMain[value="1"]~div .sheet-section-core~div fieldset+.repcontainer>.repitem input.sheet-spelltab[value^="SPL-"]+input.sheet-combattab~.sheet-filter-box,
-input.sheet-tabMain[value="3"]~div .sheet-section-talents~div fieldset+.repcontainer>.repitem input.sheet-talentType+.sheet-filter-box2, /*filter-box2 only hides when on the Talents tab*/
-input.sheet-tabMain[value="2"]~div .sheet-section-combat~div fieldset+.repcontainer>.repitem input.sheet-spelltab[value^="SPL-"]+input.sheet-combattab:checked~.sheet-filter-box {
-  display:  none;
+input.sheet-tabMain[value="3"]~div .sheet-section-talents~div fieldset+.repcontainer>.repitem input.sheet-talentType+.sheet-filter-box2 /*filter-box2 only hides when on the Talents tab*/
+{  display:  none;
 }
 
 /* ########################################### End Filterboxes ####################################################### */
@@ -2953,13 +3006,13 @@ input.sheet-tabAdjust {
 }
 
 
-input.sheet-tabKnackSummary+button[type="action"],
-input.sheet-tabMain+button[type="action"],
-input.sheet-tabSpell+button[type="action"],
-input.sheet-tabGrim+button[type="action"],
-input.sheet-tabAdjust+button[type="action"]{
+.ui-dialog .charsheet input.sheet-tabKnackSummary+button[type="action"],
+.ui-dialog .charsheet input.sheet-tabMain+button[type="action"],
+.ui-dialog .charsheet input.sheet-tabSpell+button[type="action"],
+.ui-dialog .charsheet input.sheet-tabGrim+button[type="action"],
+.ui-dialog .charsheet input.sheet-tabAdjust+button[type="action"]{
   text-align:       center;
-  display:          inline-block;
+  /*display:          inline-block;*/
   font-size:        13px;
   background-color: var( --inactive-color );
   color:            var( --header-font-color );
@@ -2995,11 +3048,11 @@ input.sheet-tabGrim+button.sheet-tabshort[type="action"]{
 }
 
 
-input:checked.sheet-tabKnackSummary+button[type="action"],
-input:checked.sheet-tabMain+button[type="action"],
-input:checked.sheet-tabSpell+button[type="action"],
-input:checked.sheet-tabGrim+button[type="action"],
-input:checked.sheet-tabAdjust+button[type="action"]{
+.ui-dialog .charsheet input:checked.sheet-tabKnackSummary+button[type="action"],
+.ui-dialog .charsheet input:checked.sheet-tabMain+button[type="action"],
+.ui-dialog .charsheet input:checked.sheet-tabSpell+button[type="action"],
+.ui-dialog .charsheet input:checked.sheet-tabGrim+button[type="action"],
+.ui-dialog .charsheet input:checked.sheet-tabAdjust+button[type="action"]{
 background-color: var( --outline-color );
 border : 1px solid var( --outline-color );
 }
@@ -3115,6 +3168,8 @@ input.sheet-tabMain[value="11"] ~ .sheet-show-rightpane-tab11:not([value="1"])~d
   display:none;
 }
 
+.sheet-tabMain[value="6"]~div .sheet-HideIfSpellTab,
+.sheet-tabMain[value="6"]~div ~ .repcontainer .sheet-HideIfSpellTab,
 .sheet-testCreature:not([value="0"])~.sheet-tabMain[value="1"]~div .sheet-HideIfOverviewNoCreature,
 .sheet-tabMain[value="1"]~div .sheet-testRepEditMode:not(:checked) ~ .repcontainer .sheet-HideIfOverviewNoEdit,
 .sheet-testCreation:not([value="1"])~.sheet-tabMain[value="1"]~div .sheet-HideIfOverviewNoCreation,
